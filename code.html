@@ -26,6 +26,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background: var(--white);
+            overflow-x: hidden;
         }
 
         .container {
@@ -63,6 +64,11 @@
             color: var(--white);
             font-size: 1.7rem;
             cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-toggle:hover {
+            transform: rotate(90deg);
         }
 
         nav ul {
@@ -76,11 +82,12 @@
             color: var(--white);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
         nav a:hover {
             color: var(--secondary-color);
+            transform: translateX(4px);
         }
 
         #hero {
@@ -114,6 +121,7 @@
             font-size: clamp(2.2rem, 4vw, 3.4rem);
             margin-bottom: 1rem;
             line-height: 1.15;
+            animation: fadeUp 1s ease both;
         }
 
         .hero-content p {
@@ -121,6 +129,7 @@
             margin-bottom: 1.8rem;
             max-width: 620px;
             color: #f4eaf9;
+            animation: fadeUp 1.2s ease both;
         }
 
         .hero-actions {
@@ -128,6 +137,7 @@
             gap: 1rem;
             flex-wrap: wrap;
             margin-bottom: 2rem;
+            animation: fadeUp 1.4s ease both;
         }
 
         .btn {
@@ -170,6 +180,7 @@
             padding: 0.8rem 1rem;
             border-radius: 12px;
             min-width: 120px;
+            animation: fadeUp 1.6s ease both;
         }
 
         .hero-highlights strong {
@@ -205,6 +216,17 @@
             color: var(--muted);
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -216,6 +238,7 @@
             padding: 1.5rem;
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            animation: fadeUp 0.8s ease both;
         }
 
         .info-card h3 {
@@ -239,7 +262,7 @@
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px) scale(1.01);
             box-shadow: 0 16px 35px rgba(0, 0, 0, 0.1);
         }
 
@@ -260,6 +283,7 @@
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 16px 40px rgba(91, 10, 109, 0.2);
+            animation: pulse 2s ease-in-out infinite;
         }
 
         .admissions-box h3 {
@@ -289,6 +313,26 @@
         .footer-content h4 {
             margin-bottom: 0.5rem;
             color: var(--secondary-color);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.01);
+            }
         }
 
         @media (min-width: 1025px) {
@@ -344,6 +388,7 @@
 
             nav ul.active {
                 display: flex;
+                animation: fadeUp 0.3s ease both;
             }
 
             nav li {
@@ -444,7 +489,7 @@
     </header>
 
     <section id="hero">
-        <div class="container hero-content">
+        <div class="container hero-content reveal">
             <span class="eyebrow">Excellence. Innovation. Leadership.</span>
             <h2>Where ambition meets world-class education</h2>
             <p>Welcome to Chrisland University, a vibrant community shaping future leaders through academic excellence, modern learning, and strong values.</p>
@@ -453,15 +498,15 @@
                 <a href="#about" class="btn btn-secondary">Explore Campus</a>
             </div>
             <div class="hero-highlights">
-                <div>
+                <div class="reveal">
                     <strong>90+</strong>
                     <span>Programmes</span>
                 </div>
-                <div>
+                <div class="reveal">
                     <strong>25+</strong>
                     <span>Years of Excellence</span>
                 </div>
-                <div>
+                <div class="reveal">
                     <strong>100%</strong>
                     <span>Student-Centered</span>
                 </div>
@@ -471,18 +516,18 @@
 
     <section id="about">
         <div class="container">
-            <h2 class="section-title">A Modern Learning Experience</h2>
-            <p class="section-subtitle">Our campus is designed to inspire confidence, creativity, and success from the first day to graduation.</p>
+            <h2 class="section-title reveal">A Modern Learning Experience</h2>
+            <p class="section-subtitle reveal">Our campus is designed to inspire confidence, creativity, and success from the first day to graduation.</p>
             <div class="about-grid">
-                <div class="info-card">
+                <div class="info-card reveal">
                     <h3>Academic Excellence</h3>
                     <p>High-quality teaching, research-led learning, and strong support for every student.</p>
                 </div>
-                <div class="info-card">
+                <div class="info-card reveal">
                     <h3>Dynamic Campus Life</h3>
                     <p>Opportunities to grow through leadership, innovation, and personal development.</p>
                 </div>
-                <div class="info-card">
+                <div class="info-card reveal">
                     <h3>Future-Ready Skills</h3>
                     <p>We prepare students for careers, entrepreneurship, and global impact.</p>
                 </div>
@@ -492,25 +537,25 @@
 
     <section id="colleges">
         <div class="container">
-            <h2 class="section-title">Our Colleges & Faculties</h2>
-            <p class="section-subtitle">Explore a wide range of academic pathways built for innovation and leadership.</p>
+            <h2 class="section-title reveal">Our Colleges & Faculties</h2>
+            <p class="section-subtitle reveal">Explore a wide range of academic pathways built for innovation and leadership.</p>
             <div class="grid">
-                <div class="card">
+                <div class="card reveal">
                     <h3><a href="#">Arts, Management & Social Sciences</a></h3>
                 </div>
-                <div class="card">
+                <div class="card reveal">
                     <h3><a href="#">Basic Medical Sciences</a></h3>
                 </div>
-                <div class="card">
+                <div class="card reveal">
                     <h3><a href="#">Natural & Applied Sciences</a></h3>
                 </div>
-                <div class="card">
+                <div class="card reveal">
                     <h3><a href="#">College of Law</a></h3>
                 </div>
-                <div class="card">
+                <div class="card reveal">
                     <h3><a href="#">Faculty of Nursing Sciences</a></h3>
                 </div>
-                <div class="card">
+                <div class="card reveal">
                     <h3><a href="#">Postgraduate College</a></h3>
                 </div>
             </div>
@@ -519,7 +564,7 @@
 
     <section id="admissions">
         <div class="container">
-            <div class="admissions-box">
+            <div class="admissions-box reveal">
                 <h3>2026/2027 Session Admissions Ongoing</h3>
                 <p>Applications are now open for UTME, Direct Entry, JUPEB, and Postgraduate programmes.</p>
                 <p><strong>Note:</strong> Candidates must be at least 16 years of age by September 30, 2026. We accept WAEC, NECO, JUPEB, NCE, OND, HND (IJMB is not accepted).</p>
@@ -530,16 +575,16 @@
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <div>
+                <div class="reveal">
                     <h4>Location</h4>
                     <p>Ajebo Road, after FMC<br>PMB 110101, Abeokuta, Ogun State</p>
                 </div>
-                <div>
+                <div class="reveal">
                     <h4>Contact Us</h4>
                     <p>08135762586 | 09035166582<br>info@chrislanduniversity.edu.ng</p>
                 </div>
             </div>
-            <p>&copy; 2026 Chrisland University. Designed for a modern, professional presentation.</p>
+            <p class="reveal">&copy; 2026 Chrisland University. Designed for a modern, professional presentation.</p>
         </div>
     </footer>
 
@@ -554,6 +599,16 @@
                 document.getElementById('navLinks').classList.remove('active');
             });
         });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
