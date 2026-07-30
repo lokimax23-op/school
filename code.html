@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrisland University, Abeokuta</title>
+    <title>Chrisland University | Excellence in Education</title>
     <style>
-        /* Base Styles */
         :root {
-            --primary-color: purple; /* Academic Blue */
-            --secondary-color: #ffcc00; /* Gold */
-            --text-color: #333;
-            --bg-light: #f4f4f4;
+            --primary-color: #5b0a6d;
+            --primary-dark: #3d0548;
+            --secondary-color: #f2b705;
+            --text-color: #243447;
+            --muted: #6b7280;
+            --bg-light: #f8f7fb;
+            --white: #ffffff;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -23,22 +25,24 @@
         body {
             line-height: 1.6;
             color: var(--text-color);
+            background: var(--white);
         }
 
-        /* Header & Navigation */
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         header {
-            background-color: var(--primary-color);
-            color: #fff;
+            background: rgba(91, 10, 109, 0.96);
+            color: var(--white);
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
         }
 
         .nav-container {
@@ -47,166 +51,390 @@
             align-items: center;
         }
 
-        .logo h1 {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
+        .logo img {
+            height: 60px;
+            width: auto;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--white);
+            font-size: 1.7rem;
+            cursor: pointer;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            gap: 1.3rem;
+            align-items: center;
         }
 
         nav a {
-            color: #fff;
+            color: var(--white);
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
             color: var(--secondary-color);
         }
 
-        /* Hero Section */
         #hero {
-            background:  url('./asset/image/clu-slide-2.webp') no-repeat center center/cover;
-            height: 60vh;
+            position: relative;
+            background: linear-gradient(90deg, rgba(35, 8, 52, 0.87), rgba(91, 10, 109, 0.72)), url('./asset/image/clu-slide-2.webp') no-repeat center center/cover;
+            min-height: 80vh;
             display: flex;
             align-items: center;
-            text-align: center;
-            color: #fff;
+            color: var(--white);
         }
 
-        .hero-content h2 {
-            font-size: 3rem;
+        .hero-content {
+            max-width: 700px;
+            padding: 3rem 0;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            background: rgba(242, 183, 5, 0.25);
+            color: var(--secondary-color);
+            padding: 0.5rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
             margin-bottom: 1rem;
         }
 
+        .hero-content h2 {
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            margin-bottom: 1rem;
+            line-height: 1.15;
+        }
+
         .hero-content p {
-            font-size: 1.2rem;
+            font-size: 1.08rem;
+            margin-bottom: 1.8rem;
+            max-width: 620px;
+            color: #f4eaf9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
             margin-bottom: 2rem;
         }
 
         .btn {
             display: inline-block;
-            background: purple;
-            color: var(--secondary-color);
-            padding: 0.8rem 2rem;
+            padding: 0.9rem 1.4rem;
             text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background 0.3s;
+            font-weight: 700;
+            border-radius: 999px;
+            transition: all 0.3s ease;
         }
 
-        .btn:hover {
+        .btn-primary {
             background: var(--secondary-color);
-            color: purple;
+            color: var(--primary-dark);
         }
-        
-        /* Colleges Section */
-        #colleges {
-            padding: 4rem 0;
-            background-color: var(--bg-light);
+
+        .btn-primary:hover {
+            background: #ffd45f;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            color: var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .hero-highlights div {
+            background: rgba(255, 255, 255, 0.14);
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            min-width: 120px;
+        }
+
+        .hero-highlights strong {
+            display: block;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .hero-highlights span {
+            font-size: 0.9rem;
+            color: #f2e8f9;
+        }
+
+        #about, #colleges, #admissions {
+            padding: 4.5rem 0;
+        }
+
+        #about {
+            background: var(--bg-light);
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 1.2rem;
             font-size: 2rem;
             color: var(--primary-color);
         }
 
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 2.2rem;
+            color: var(--muted);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
         }
 
         .card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
+            background: var(--white);
+            padding: 1.7rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
             border-top: 4px solid var(--secondary-color);
-            
-        }
-        .card a{
-            text-decoration: none;
-            color: var(--primary-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Admissions Section */
-        #admissions {
-            padding: 4rem 0;
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin-bottom: 0.4rem;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 700;
         }
 
         .admissions-box {
-            background: var(--primary-color);
-            color: #fff;
-            padding: 3rem;
-            border-radius: 8px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
             text-align: center;
+            box-shadow: 0 16px 40px rgba(91, 10, 109, 0.2);
         }
 
         .admissions-box h3 {
             color: var(--secondary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.7rem;
         }
 
-        /* Footer */
+        .admissions-box p {
+            margin-bottom: 0.7rem;
+        }
+
         footer {
-            background: #222;
-            color: #fff;
-            text-align: center;
+            background: #1d1d1d;
+            color: var(--white);
             padding: 2rem 0;
         }
 
         .footer-content {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            justify-content: space-between;
+            gap: 1rem;
             margin-bottom: 1rem;
         }
 
-        .footer-content div {
-            margin-bottom: 1rem;
+        .footer-content h4 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
+        @media (min-width: 1025px) {
+            .container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 1024px) and (min-width: 769px) {
             .nav-container {
+                gap: 1rem;
+            }
+
+            .hero-content {
+                max-width: 600px;
+            }
+
+            .about-grid,
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.9rem 0;
+            }
+
+            .nav-container {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                width: 100%;
+            }
+
+            nav ul {
+                display: none;
                 flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                background: rgba(91, 10, 109, 0.98);
+                padding: 1rem;
+                border-radius: 12px;
+                margin-top: 0.5rem;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav li {
+                width: 100%;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.5rem 0;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            #hero {
+                min-height: 70vh;
                 text-align: center;
             }
-            nav ul {
-                margin-top: 1rem;
-                flex-wrap: wrap;
+
+            .hero-content {
+                text-align: center;
+                margin: 0 auto;
+                padding: 2rem 0;
+            }
+
+            .hero-actions {
                 justify-content: center;
             }
+
+            .hero-highlights {
+                justify-content: center;
+            }
+
+            .about-grid,
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+            }
+
+            .admissions-box {
+                padding: 2rem 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+
             .hero-content h2 {
-                font-size: 2rem;
+                font-size: 1.9rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-highlights div {
+                width: 100%;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Header Navigation -->
     <header>
         <div class="container nav-container">
-            <div class="logo" >
-                <img src="./asset/image/clu-logo-white.png" alt="" width="200px" height="67px">
+            <div class="logo">
+                <img src="./asset/image/clu-logo-white.png" alt="Chrisland University logo">
             </div>
+            <button class="menu-toggle" aria-label="Open menu" onclick="toggleMenu()">☰</button>
             <nav>
-                <ul>
-                    <div>
-
+                <ul id="navLinks">
                     <li><a href="#hero">Home</a></li>
-                
-                </div>
+                    <li><a href="#about">About</a></li>
                     <li><a href="#colleges">Colleges</a></li>
                     <li><a href="#admissions">Admissions</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -215,19 +443,57 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="hero">
         <div class="container hero-content">
-            <h2>Holistic Education for a Bright Future</h2>
-            <p>Welcome to the birthplace of geniuses and future leaders in Abeokuta, Ogun State.</p>
-            <a href="#admissions" class="btn">Apply Now </a>
+            <span class="eyebrow">Excellence. Innovation. Leadership.</span>
+            <h2>Where ambition meets world-class education</h2>
+            <p>Welcome to Chrisland University, a vibrant community shaping future leaders through academic excellence, modern learning, and strong values.</p>
+            <div class="hero-actions">
+                <a href="#admissions" class="btn btn-primary">Apply Now</a>
+                <a href="#about" class="btn btn-secondary">Explore Campus</a>
+            </div>
+            <div class="hero-highlights">
+                <div>
+                    <strong>90+</strong>
+                    <span>Programmes</span>
+                </div>
+                <div>
+                    <strong>25+</strong>
+                    <span>Years of Excellence</span>
+                </div>
+                <div>
+                    <strong>100%</strong>
+                    <span>Student-Centered</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Colleges & Faculties Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">A Modern Learning Experience</h2>
+            <p class="section-subtitle">Our campus is designed to inspire confidence, creativity, and success from the first day to graduation.</p>
+            <div class="about-grid">
+                <div class="info-card">
+                    <h3>Academic Excellence</h3>
+                    <p>High-quality teaching, research-led learning, and strong support for every student.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Dynamic Campus Life</h3>
+                    <p>Opportunities to grow through leadership, innovation, and personal development.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Future-Ready Skills</h3>
+                    <p>We prepare students for careers, entrepreneurship, and global impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="colleges">
         <div class="container">
             <h2 class="section-title">Our Colleges & Faculties</h2>
+            <p class="section-subtitle">Explore a wide range of academic pathways built for innovation and leadership.</p>
             <div class="grid">
                 <div class="card">
                     <h3><a href="#">Arts, Management & Social Sciences</a></h3>
@@ -236,7 +502,7 @@
                     <h3><a href="#">Basic Medical Sciences</a></h3>
                 </div>
                 <div class="card">
-                    <h3>    <a href="#">Natural & Applied Sciences</a></h3>
+                    <h3><a href="#">Natural & Applied Sciences</a></h3>
                 </div>
                 <div class="card">
                     <h3><a href="#">College of Law</a></h3>
@@ -251,19 +517,16 @@
         </div>
     </section>
 
-    <!-- Admissions Section -->
     <section id="admissions">
         <div class="container">
             <div class="admissions-box">
                 <h3>2026/2027 Session Admissions Ongoing</h3>
                 <p>Applications are now open for UTME, Direct Entry, JUPEB, and Postgraduate programmes.</p>
-                <br>
                 <p><strong>Note:</strong> Candidates must be at least 16 years of age by September 30, 2026. We accept WAEC, NECO, JUPEB, NCE, OND, HND (IJMB is not accepted).</p>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -276,9 +539,21 @@
                     <p>08135762586 | 09035166582<br>info@chrislanduniversity.edu.ng</p>
                 </div>
             </div>
-            <p>&copy; 2026 Chrisland University. Code structure generated for educational purposes.</p>
+            <p>&copy; 2026 Chrisland University. Designed for a modern, professional presentation.</p>
         </div>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            const links = document.getElementById('navLinks');
+            links.classList.toggle('active');
+        }
+
+        document.querySelectorAll('#navLinks a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
